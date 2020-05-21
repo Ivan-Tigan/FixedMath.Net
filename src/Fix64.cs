@@ -8,7 +8,7 @@ namespace FixMath.NET
     /// <summary>
     /// Represents a Q31.32 fixed-point number.
     /// </summary>
-    public partial struct Fix64 : IEquatable<Fix64>, IComparable<Fix64>
+    public partial struct Fix64 : IEquatable<Fix64>, IComparable
     {
         readonly long m_rawValue;
 
@@ -470,7 +470,9 @@ namespace FixMath.NET
 
             return result;
         }
+        
 
+        
         /// <summary>
         /// Returns the base-2 logarithm of a specified number.
         /// Provides at least 9 decimals of accuracy.
@@ -917,7 +919,7 @@ namespace FixMath.NET
         }
 
 
-
+        public static Fix64 get_One = One;
         public static explicit operator Fix64(long value)
         {
             return new Fix64(value * ONE);
@@ -925,6 +927,10 @@ namespace FixMath.NET
         public static explicit operator long(Fix64 value)
         {
             return value.m_rawValue >> FRACTIONAL_PLACES;
+        }
+        public static explicit operator int(Fix64 value)
+        {
+            return (int) value.m_rawValue >> FRACTIONAL_PLACES;
         }
         public static explicit operator Fix64(float value)
         {
@@ -975,6 +981,11 @@ namespace FixMath.NET
         {
             // Up to 10 decimal places
             return ((decimal)this).ToString("0.##########");
+        }
+
+        public int CompareTo(object obj)
+        {
+            return this.CompareTo((Fix64) obj);
         }
 
         public static Fix64 FromRaw(long rawValue)
