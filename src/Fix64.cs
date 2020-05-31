@@ -10,7 +10,7 @@ namespace FixMath.NET
     /// </summary>
     public partial struct Fix64 : IEquatable<Fix64>, IComparable
     {
-        readonly long m_rawValue;
+        public long m_rawValue;
 
         // Precision of this type is 2^-32, that is 2,3283064365386962890625E-10
         public static readonly decimal Precision = (decimal)(new Fix64(1L));//0.00000000023283064365386962890625m;
@@ -1071,7 +1071,7 @@ namespace FixMath.NET
         /// <summary>
         /// The underlying integer representation
         /// </summary>
-        public long RawValue => m_rawValue;
+        private long RawValue => m_rawValue;
 
         /// <summary>
         /// This is the constructor from raw value; it can only be used interally.
@@ -1086,5 +1086,7 @@ namespace FixMath.NET
         {
             m_rawValue = value * ONE;
         }
+        
+
     }
 }
