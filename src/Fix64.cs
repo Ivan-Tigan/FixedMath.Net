@@ -43,7 +43,7 @@ namespace FixMath.NET
 		const long LOG2MAX = 0x1F00000000;
 		const long LOG2MIN = -0x2000000000;
 		const int LUT_SIZE = (int)(PI_OVER_2 >> 15);
-
+		
 		/// <summary>
 		/// Returns a number indicating the sign of a Fix64 number.
 		/// Returns 1 if the value is positive, 0 if is 0, and -1 if it is negative.
