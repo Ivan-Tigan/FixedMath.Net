@@ -8,6 +8,7 @@ namespace FixMath.NET
 	/// <summary>
 	/// Represents a Q31.32 fixed-point number.
 	/// </summary>
+	[Serializable]
 	public partial struct Fix64 : IEquatable<Fix64>, IComparable
 	{
 		public long m_rawValue;
@@ -870,6 +871,10 @@ namespace FixMath.NET
 			return result;
 		}
 
+		// public static int as_int(Fix64 x)
+		// {
+			// return (int) x.m_rawValue ;
+		// } 
 		public static Fix64 Atan2(Fix64 y, Fix64 x)
 		{
 			var yl = y.m_rawValue;
@@ -930,7 +935,8 @@ namespace FixMath.NET
 		}
 		public static explicit operator int(Fix64 value)
 		{
-			return (int) value.m_rawValue >> FRACTIONAL_PLACES;
+			// return (int) value.m_rawValue >> FRACTIONAL_PLACES;
+			return (int) (value.m_rawValue / ONE);
 		}
 		public static explicit operator Fix64(float value)
 		{
