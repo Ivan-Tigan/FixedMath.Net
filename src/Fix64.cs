@@ -804,7 +804,7 @@ namespace FixMath.NET
 		{
 			if (x < -One || x > One)
 			{
-				throw new ArgumentOutOfRangeException(nameof(x));
+				return PiOver2;
 			}
 
 			if (x.m_rawValue == 0) return PiOver2;
